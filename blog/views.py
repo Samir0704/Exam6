@@ -4,6 +4,7 @@ from blog.models import Product, Customer
 from blog.forms import  CommentModelForm,CustomerForm
 from django.db.models import Q # type: ignore
 from django.core.paginator import Paginator # type: ignore
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -93,6 +94,7 @@ def customer_edit(request, pk):
 
 
 
+
     
 
 
@@ -117,3 +119,31 @@ def add_comment(request, product_id):
     }
 
     return render(request, 'blog/detail.html', context)
+
+
+# def login_logic(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect('home.htnl')  # Redirect to home page after login
+#         else:
+#             return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+#     else:
+#         return render(request, 'blog/auth/login.html')
+
+def login_logic(request):
+
+    return render(request,'blog/auth/login.html')
+
+def logout_logic(request):
+    
+    return render(request,'blog/auth/logout.html')
+
+
+def register_logic(request):
+    
+    return render(request,'blog/auth/register.html')
+

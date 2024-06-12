@@ -1,7 +1,7 @@
 from django.contrib import admin # type: ignore
 from django.urls import path # type: ignore
 
-from blog.views import index,detail_product,add_comment,customer_details,customer_list,delete_customer,customer_edit
+from blog.views import index,detail_product,add_comment,customer_details,customer_list,delete_customer,customer_edit,login_logic,logout_logic,register_logic
 from blog.models import Customer 
 urlpatterns = [
     path('', index, name='index'),
@@ -10,5 +10,8 @@ urlpatterns = [
     path('custumers/<int:pk>',customer_details,name='customer_details'),
     path('customer/', customer_list, name='customer_list'),
     path('customer/<int:pk>/', delete_customer, name='delete_customer'),
-    path('customer/<int:pk>/', customer_edit, name='customer_edit')
+    path('customer/<int:pk>/', customer_edit, name='customer_edit'),
+    path('login-page/',login_logic,name='login'),
+    path('logout-page/',logout_logic,name='logout'),
+    path('register-page/',login_logic,name='register'),
 ]
